@@ -1,0 +1,15 @@
+@startuml
+
+Title Client Server Akka Streams Interaction
+
+skinparam sequenceArrowThickness 2
+skinparam sequenceParticipant underline
+skinparam backgroundColor Snow
+skinparam defaultFontName Aapex
+skinparam roundcorner 10
+autonumber
+control Client #brown
+entity Server #lightblue
+Client ->> Server: ""request_messages_as_akka_stream""
+Client <-- Server: ""response_messages_as_akka_stream""
+@enduml

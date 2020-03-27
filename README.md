@@ -19,20 +19,7 @@ Their interaction roughly can be shown as:
 **client** - Akka_Stream[*req_message] -> **server**  
 **client** <- Akka_Stream[*resp_message] - **server**
 
-In [Plantuml](https://plantuml.com/sequence-diagram) it can be shown as:
-
-@startuml
-skinparam sequenceArrowThickness 2
-skinparam sequenceParticipant underline
-skinparam backgroundColor Snow
-skinparam defaultFontName Aapex
-skinparam roundcorner 10
-autonumber
-control Client #brown
-entity Server #lightblue
-Client ->> Server: ""request_messages_as_akka_stream""
-Client <-- Server: ""response_messages_as_akka_stream""
-@enduml
+In [Plantuml](https://plantuml.com/sequence-diagram) it can be shown as a [model](models/client_server_seq.puml).
 
 # Goals
 Components to be developed in this project, should answer to questions:
@@ -78,29 +65,7 @@ System itself should add only minor overhead to TCP Akka streams work.
 Metrics can be (or more like "should") gathered with 3rd party toolkits (nagios, prometheus, influxdb, nmap, wireshark etc). 
 
 ## Components
-In [Plantuml](https://plantuml.com/component-diagram) components can be shown as:
-
-@startuml
-skinparam componentStyle uml2
-skinparam shadowing<<with_shadow>> true
-skinparam backgroundColor Snow
-skinparam defaultFontName Aapex
-skinparam roundcorner 5
-node "Server Node" as SPN {
-    interface "Akka TCP Listener" as Recpt
-    package server {
-        component tcom_tier_srv_akka
-        [tcom_tier_srv_akka] -up- Recpt
-    }
-}
-node "Client Node" as CN {
-    package client {
-		component tcom_tier_cli_akka
-    }
-}
-CN -- "Akka Stream" SPN : TCP
-[tcom_tier_cli_akka] ..> Recpt : messages_stream
-@enduml
+In [Plantuml](https://plantuml.com/component-diagram) components can be shown as a [model](models/client_server_components.puml).
 
 From package prospective, this project split into crosscutting concern modules (1 for now - **commons**) 
 and tier ones (for client and server).

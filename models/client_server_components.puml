@@ -1,0 +1,25 @@
+@startuml
+
+Title Client Server Akka Streams Components
+
+skinparam componentStyle uml2
+skinparam shadowing<<with_shadow>> true
+skinparam backgroundColor Snow
+skinparam defaultFontName Aapex
+skinparam roundcorner 5
+node "Server Node" as SPN {
+    interface "Akka TCP Listener" as Recpt
+    package server {
+        component tcom_tier_srv_akka
+        [tcom_tier_srv_akka] -up- Recpt
+    }
+}
+node "Client Node" as CN {
+    package client {
+		component tcom_tier_cli_akka
+    }
+}
+CN -- "Akka Stream" SPN : TCP
+[tcom_tier_cli_akka] ..> Recpt : messages_stream
+@enduml
+
