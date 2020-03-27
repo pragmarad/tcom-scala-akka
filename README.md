@@ -156,7 +156,7 @@ NOTE: All parameters are optional, reasonabale defaults from env/config will be 
 If to put both client and server deployments on the same server, all should work with just using scripts with all defaults. 
 
 Config class **application.tcom.conf** will be put in classpath during build. Example config content:
-```json
+```HOCON
 tcom.cli.akka {
   host = "127.0.0.1"
   host = ${?TCOM_SRV_HOST}
@@ -190,7 +190,7 @@ If to put both client and server deployments on the same server, all should work
 
 Config class **application.tcom.conf** will be put in classpath during build. Example config content:
 
-```json
+```HOCON
 tcom.srv.akka {
   host = "127.0.0.1"
   host = ${?TCOM_SRV_HOST}
